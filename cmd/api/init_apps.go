@@ -1,0 +1,74 @@
+package api
+
+import (
+	"gitlab.com/phonepost/bip-be-platform/internal/auth"
+	"gitlab.com/phonepost/bip-be-platform/internal/blocks"
+	"gitlab.com/phonepost/bip-be-platform/internal/blockthread"
+	blockThreadCommentcomment "gitlab.com/phonepost/bip-be-platform/internal/blockthreadcomment"
+	"gitlab.com/phonepost/bip-be-platform/internal/canvasbranch"
+	"gitlab.com/phonepost/bip-be-platform/internal/canvasbranchpermissions"
+	"gitlab.com/phonepost/bip-be-platform/internal/canvasrepo"
+	"gitlab.com/phonepost/bip-be-platform/internal/collection"
+	"gitlab.com/phonepost/bip-be-platform/internal/collectionpermissions"
+	"gitlab.com/phonepost/bip-be-platform/internal/feed"
+	"gitlab.com/phonepost/bip-be-platform/internal/follow"
+	"gitlab.com/phonepost/bip-be-platform/internal/mailers"
+	"gitlab.com/phonepost/bip-be-platform/internal/member"
+	"gitlab.com/phonepost/bip-be-platform/internal/mentions"
+	"gitlab.com/phonepost/bip-be-platform/internal/mr"
+	"gitlab.com/phonepost/bip-be-platform/internal/notifications"
+	"gitlab.com/phonepost/bip-be-platform/internal/parser2"
+	"gitlab.com/phonepost/bip-be-platform/internal/payments"
+	"gitlab.com/phonepost/bip-be-platform/internal/permissions"
+	"gitlab.com/phonepost/bip-be-platform/internal/post"
+	"gitlab.com/phonepost/bip-be-platform/internal/pr"
+	"gitlab.com/phonepost/bip-be-platform/internal/queries"
+	"gitlab.com/phonepost/bip-be-platform/internal/reactions"
+	"gitlab.com/phonepost/bip-be-platform/internal/reel"
+	"gitlab.com/phonepost/bip-be-platform/internal/role"
+	"gitlab.com/phonepost/bip-be-platform/internal/shortner"
+	"gitlab.com/phonepost/bip-be-platform/internal/slack"
+	"gitlab.com/phonepost/bip-be-platform/internal/studio"
+	"gitlab.com/phonepost/bip-be-platform/internal/studio_integration"
+	"gitlab.com/phonepost/bip-be-platform/internal/studiopermissions"
+	"gitlab.com/phonepost/bip-be-platform/internal/tasks"
+	"gitlab.com/phonepost/bip-be-platform/internal/user"
+	"gitlab.com/phonepost/bip-be-platform/internal/xpcontribs"
+)
+
+func InitAllApps() {
+	user.InitApp()
+	auth.InitApp()
+	studio.InitApp()
+	member.InitApp()
+	follow.InitApp()
+	collection.InitApp()
+	collectionpermissions.InitApp()
+	canvasbranch.InitApp()
+	canvasbranchpermissions.InitApp()
+	canvasrepo.InitApp()
+	blocks.InitApp()
+	blockthread.InitApp()
+	blockThreadCommentcomment.InitApp()
+	permissions.InitApp()
+	reel.InitApp()
+	reactions.InitApp()
+	permissions.InitApp()
+	notifications.InitApp()
+	pr.InitApp()
+	feed.InitApp()
+	mr.InitApp()
+	role.InitApp()
+	studio_integration.InitApp()
+	studiopermissions.InitApp()
+	mentions.InitApp()
+	mailers.InitApp()
+	shortner.InitApp()
+	parser2.InitApp()
+	tasks.InitApp()
+	slack2.InitApp()
+	post.InitApp()
+	payments.InitApp()
+	queries.InitApp()
+	xpcontribs.InitApp()
+}

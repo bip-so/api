@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: api
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: dockerfiles/local.Dockerfile
+    restart: "on-failure"
+    ports:
+      - "9001:9001"
+
+  worker:
+    container_name: worker
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: cmd/api_worker/Dockerfile
+    restart: "on-failure"
+
+  discord-worker:
+    container_name: discord-worker
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: cmd/discord_worker/Dockerfile
+    restart: "on-failure"
+
+  discord-client:
+    container_name: discord-client
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: cmd/discord_client/Dockerfile
+    restart: "on-failure"
+
+  bip-kafka:
+    container_name: bip-kafka
+    env_file:
+      - .kafka.env
+    build:
+      context: .
+      dockerfile: dockerfiles/local.Dockerfile
+    restart: "on-failure"

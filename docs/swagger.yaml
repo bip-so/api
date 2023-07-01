@@ -1,0 +1,4989 @@
+definitions:
+  ar.ManageAccessRequestPost:
+    properties:
+      canvasBranchPermissionGroup:
+        type: string
+      status:
+        type: string
+    type: object
+  auth.PostNewOtpRequest:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  auth.ResetPasswordData:
+    properties:
+      password:
+        type: string
+      token:
+        type: string
+    required:
+    - password
+    - token
+    type: object
+  auth.ResponseNewOtp:
+    properties:
+      email:
+        type: string
+      otp:
+        type: string
+    type: object
+  auth.SocialAuthPost:
+    properties:
+      access_token:
+        type: string
+      clientReferenceId:
+        type: string
+      email:
+        type: string
+      fullName:
+        type: string
+      image:
+        type: string
+      provider:
+        type: string
+      providerID:
+        type: string
+      userName:
+        type: string
+      userViaDiscordAppDirectory:
+        type: boolean
+    required:
+    - fullName
+    - image
+    - provider
+    - providerID
+    type: object
+  auth.TokenDetails:
+    properties:
+      accessToken:
+        type: string
+      accessTokenID:
+        type: string
+      refreshToken:
+        type: string
+      refreshTokenID:
+        type: string
+    type: object
+  auth.changePasswordData:
+    properties:
+      newPassword:
+        type: string
+      oldPassword:
+        type: string
+    required:
+    - newPassword
+    - oldPassword
+    type: object
+  auth.expectedExistingEmailBody:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  auth.expectedExistingUsernameBody:
+    properties:
+      username:
+        type: string
+    required:
+    - username
+    type: object
+  auth.expectedLegacySignupPostData:
+    properties:
+      clientReferenceId:
+        type: string
+      email:
+        description: Username              string `json:"username"` // Can be Email
+          or Username
+        type: string
+      password:
+        type: string
+    type: object
+  auth.expectedLoginPostData:
+    properties:
+      ghostSecret:
+        type: string
+      ghostToken:
+        type: string
+      isGhostLogin:
+        type: boolean
+      otp:
+        type: string
+      password:
+        type: string
+      username:
+        description: Can be Email or Username
+        type: string
+    required:
+    - username
+    type: object
+  auth.expectedRefreshTokenPostData:
+    properties:
+      AccessTokenID:
+        type: string
+      refreshToken:
+        description: AccessToken   string `json:"accessToken"  binding:"required"`
+          // Can be Email or Username
+        type: string
+    required:
+    - AccessTokenID
+    - refreshToken
+    type: object
+  auth.forgotPasswordData:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  bat.CreateAccessTokenPost:
+    properties:
+      permissionGroup:
+        type: string
+    type: object
+  bat.CreateEmailInvite:
+    properties:
+      invites:
+        items:
+          $ref: '#/definitions/bat.EmailInvitePerEmail'
+        type: array
+    type: object
+  bat.EmailInvitePerEmail:
+    properties:
+      canvasPermissionsGroup:
+        type: string
+      email:
+        type: string
+    type: object
+  bat.PlaceHolder:
+    type: object
+  blockThreadCommentcomment.PatchBlockThreadComment:
+    properties:
+      data:
+        items:
+          type: integer
+        type: array
+      id:
+        type: integer
+      isReply:
+        type: boolean
+      parentId:
+        type: integer
+      position:
+        type: integer
+      threadId:
+        type: integer
+    required:
+    - data
+    - id
+    - isReply
+    - parentId
+    - position
+    - threadId
+    type: object
+  blockThreadCommentcomment.PostBlockThreadComment:
+    properties:
+      data:
+        items:
+          type: integer
+        type: array
+      isEdited:
+        type: boolean
+      isReply:
+        type: boolean
+      parentId:
+        type: integer
+      position:
+        type: integer
+      threadId:
+        type: integer
+    required:
+    - data
+    - threadId
+    type: object
+  blockthread.EmptyBlockThread:
+    type: object
+  blockthread.PatchBlockThread:
+    properties:
+      canvasBranchID:
+        type: integer
+      canvasRepositoryID:
+        type: integer
+      highlightedText:
+        type: string
+      id:
+        type: integer
+      position:
+        type: integer
+      startBlockID:
+        type: integer
+      text:
+        type: string
+      textRangeEnd:
+        type: integer
+      textRangeStart:
+        type: integer
+    required:
+    - canvasBranchID
+    - canvasRepositoryID
+    - highlightedText
+    - id
+    - position
+    - startBlockID
+    - text
+    - textRangeEnd
+    - textRangeStart
+    type: object
+  blockthread.PostBlockThread:
+    properties:
+      canvasBranchId:
+        type: integer
+      canvasRepositoryId:
+        type: integer
+      highlightedText:
+        type: string
+      position:
+        type: integer
+      startBlockUUID:
+        type: string
+      text:
+        type: string
+      textRangeEnd:
+        type: integer
+      textRangeStart:
+        type: integer
+    required:
+    - canvasBranchId
+    - canvasRepositoryId
+    - position
+    - text
+    type: object
+  canvasbranch.CanvasBlockAssociationPost:
+    properties:
+      blocks:
+        items:
+          $ref: '#/definitions/models.PostBlocks'
+        type: array
+      permissionContext:
+        type: string
+    type: object
+  canvasbranch.CanvasBlockPost:
+    properties:
+      blocks:
+        items:
+          $ref: '#/definitions/models.PostBlocks'
+        type: array
+    type: object
+  canvasbranch.CanvasBranchVisibilityPost:
+    properties:
+      visibility:
+        description: '"private" "view" "comment"  "edit"'
+        type: string
+    required:
+    - visibility
+    type: object
+  canvasbranch.EmptyPost:
+    type: object
+  canvasbranch.GetCanvasBranches:
+    properties:
+      canvasId:
+        type: integer
+      collectionId:
+        type: integer
+      parentCanvasId:
+        type: integer
+    type: object
+  canvasbranch.InitPRPost:
+    properties:
+      message:
+        type: string
+    required:
+    - message
+    type: object
+  canvasbranch.ManagePublishRequest:
+    properties:
+      accept:
+        type: boolean
+    type: object
+  canvasbranch.MergeRequestAcceptPartialPost:
+    properties:
+      changesAccepted:
+        additionalProperties: true
+        type: object
+      commitMessage:
+        type: string
+      status:
+        description: MergeRequestID  uint64                  `json:"mergeRequestID"`
+        type: string
+    required:
+    - commitMessage
+    type: object
+  canvasbranch.MergeRequestCreatePost:
+    properties:
+      commitMessage:
+        type: string
+    type: object
+  canvasbranch.NewDraftBranchPost:
+    properties:
+      canvasRepoId:
+        type: integer
+      collectionId:
+        type: integer
+      parentCanvasRepoId:
+        type: integer
+    type: object
+  canvasbranch.SearchBranchRepos:
+    properties:
+      query:
+        type: string
+    type: object
+  canvasbranch.newCanvasBranchPost:
+    properties:
+      canvasRepoId:
+        type: integer
+      collectionId:
+        type: integer
+      fromCanvasBranchId:
+        type: integer
+      parentCanvasRepoId:
+        type: integer
+    required:
+    - canvasRepoId
+    - collectionId
+    type: object
+  canvasbranchpermissions.NewCanvasBranchPermissionCreatePost:
+    properties:
+      canvasBranchId:
+        type: integer
+      canvasRepositoryId:
+        type: integer
+      collectionId:
+        type: integer
+      isOverridden:
+        type: boolean
+      memberID:
+        type: integer
+      parentCanvasRepositoryId:
+        type: integer
+      permGroup:
+        type: string
+      roleID:
+        type: integer
+      userID:
+        type: integer
+    required:
+    - canvasBranchId
+    - canvasRepositoryId
+    - collectionId
+    - permGroup
+    type: object
+  canvasrepo.CreateLanguageValidator:
+    properties:
+      autoTranslate:
+        type: boolean
+      canvasRepositoryID:
+        type: integer
+      languages:
+        items:
+          type: string
+        type: array
+    type: object
+  canvasrepo.GetAllCanvasValidator:
+    properties:
+      parentCanvasRepositoryID:
+        type: integer
+      parentCollectionID:
+        type: integer
+    type: object
+  canvasrepo.InitCanvasRepoPost:
+    properties:
+      collectionID:
+        type: integer
+      icon:
+        type: string
+      name:
+        type: string
+      parentCanvasRepositoryID:
+        type: integer
+      position:
+        type: integer
+    required:
+    - collectionID
+    - name
+    - position
+    type: object
+  canvasrepo.MoveCanvasRepoPost:
+    properties:
+      canvasRepoID:
+        type: integer
+      futurePosition:
+        type: integer
+      toCollectionID:
+        type: integer
+      toParentCanvasRepositoryID:
+        type: integer
+    type: object
+  canvasrepo.NewCanvasRepoPost:
+    properties:
+      collectionID:
+        type: integer
+      icon:
+        type: string
+      name:
+        type: string
+      parentCanvasRepositoryID:
+        type: integer
+      position:
+        type: integer
+    required:
+    - collectionID
+    - name
+    - position
+    type: object
+  canvasrepo.UpdateCanvasRepoPost:
+    properties:
+      coverUrl:
+        type: string
+      icon:
+        type: string
+      name:
+        type: string
+    type: object
+  collection.CollectionCreateValidator:
+    properties:
+      icon:
+        type: string
+      name:
+        type: string
+      parentCollectionID:
+        type: integer
+      position:
+        type: integer
+      publicAccess:
+        type: string
+    required:
+    - name
+    - position
+    - publicAccess
+    type: object
+  collection.CollectionMoveValidator:
+    properties:
+      collectionId:
+        type: integer
+      position:
+        type: integer
+    required:
+    - collectionId
+    - position
+    type: object
+  collection.CollectionUpdateValidator:
+    properties:
+      icon:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      publicAccess:
+        type: string
+    required:
+    - id
+    - name
+    - publicAccess
+    type: object
+  collection.VisibilityUpdateValidator:
+    properties:
+      publicAccess:
+        type: string
+    required:
+    - publicAccess
+    type: object
+  collectionpermissions.CollectionPermissionValidator:
+    properties:
+      collectionId:
+        type: integer
+      isOverridden:
+        default: false
+        type: boolean
+      memberID:
+        type: integer
+      permGroup:
+        type: string
+      roleID:
+        type: integer
+    required:
+    - collectionId
+    - permGroup
+    type: object
+  follow.FollowUserFollowCountResponse:
+    properties:
+      followers:
+        type: integer
+      following:
+        type: integer
+    type: object
+  follow.FollowUserStudioCountResponse:
+    properties:
+      followers:
+        type: integer
+    type: object
+  follow.PostFollowStudioRequest:
+    properties:
+      userId:
+        type: integer
+    required:
+    - userId
+    type: object
+  follow.PostFollowUserRequest:
+    properties:
+      userId:
+        type: integer
+    required:
+    - userId
+    type: object
+  follow.PostUnFollowStudioRequest:
+    properties:
+      userId:
+        type: integer
+    required:
+    - userId
+    type: object
+  follow.PostUnFollowUserRequest:
+    properties:
+      userId:
+        type: integer
+    required:
+    - userId
+    type: object
+  mentions.MentionPost:
+    properties:
+      branches:
+        description: List of Branches ID's
+        items:
+          type: integer
+        type: array
+      canvasBranchId:
+        type: integer
+      objectID:
+        description: The id of the Scope
+        type: integer
+      objectUUID:
+        description: UUID for the block
+        type: string
+      roles:
+        description: List of Role ID's
+        items:
+          type: integer
+        type: array
+      scope:
+        description: Scope
+        type: string
+      users:
+        description: List of user ID's
+        items:
+          type: integer
+        type: array
+    type: object
+  models.PostBlocks:
+    properties:
+      archivedAt:
+        type: string
+      archivedByID:
+        type: integer
+      attributes:
+        items:
+          type: integer
+        type: array
+      children:
+        items:
+          type: integer
+        type: array
+      createdAt:
+        type: string
+      createdByID:
+        type: integer
+      id:
+        type: integer
+      isArchived:
+        type: boolean
+      rank:
+        type: integer
+      scope:
+        type: string
+      type:
+        type: string
+      updatedAt:
+        type: string
+      updatedByID:
+        type: integer
+      uuid:
+        type: string
+      version:
+        type: integer
+    type: object
+  permissiongroup.PermissionObject:
+    properties:
+      key:
+        description: uppercase no space CAN_INVITE
+        type: string
+      value:
+        description: value can be 0, 1
+        type: integer
+    type: object
+  permissiongroup.PermissionsSchemaResponse:
+    properties:
+      group:
+        type: string
+      permissionGroups:
+        items:
+          $ref: '#/definitions/permissiongroup.PermissionsTemplate'
+        type: array
+      version:
+        type: integer
+    type: object
+  permissiongroup.PermissionsTemplate:
+    properties:
+      betterPermissions:
+        additionalProperties:
+          type: integer
+        type: object
+      displayName:
+        type: string
+      permissions:
+        description: Has many permisions
+        items:
+          $ref: '#/definitions/permissiongroup.PermissionObject'
+        type: array
+      studioID:
+        type: integer
+      systemName:
+        type: string
+      type:
+        description: Can be studio/Canvas or /Collections
+        type: string
+      weight:
+        type: integer
+    type: object
+  post.CreatePostCommentValidation:
+    properties:
+      comment:
+        type: string
+      isEdited:
+        type: boolean
+      parentPostCommentID:
+        type: integer
+    type: object
+  post.NewPostCommentReaction:
+    properties:
+      emoji:
+        type: string
+    required:
+    - emoji
+    type: object
+  post.NewPostReaction:
+    properties:
+      emoji:
+        type: string
+    required:
+    - emoji
+    type: object
+  post.NewPostThread:
+    properties:
+      attributes:
+        items:
+          type: integer
+        type: array
+      children:
+        items:
+          type: integer
+        type: array
+      isPublic:
+        type: boolean
+      roleIds:
+        items:
+          type: integer
+        type: array
+    type: object
+  post.RemovePostCommentReaction:
+    properties:
+      emoji:
+        type: string
+    required:
+    - emoji
+    type: object
+  post.RemovePostReaction:
+    properties:
+      emoji:
+        type: string
+    required:
+    - emoji
+    type: object
+  post.UpdatePostCommentValidation:
+    properties:
+      comment:
+        type: string
+      isEdited:
+        type: boolean
+    type: object
+  post.UpdatePostThread:
+    properties:
+      attributes:
+        items:
+          type: integer
+        type: array
+      children:
+        items:
+          type: integer
+        type: array
+      isPublic:
+        type: boolean
+      roleIds:
+        items:
+          type: integer
+        type: array
+    type: object
+  queries.CreateAccessRequestPost:
+    properties:
+      canvasBranchID:
+        type: integer
+      canvasRepositoryID:
+        type: integer
+      collectionID:
+        type: integer
+      studioID:
+        type: integer
+    type: object
+  reactions.CreateMentionPost:
+    properties:
+      blockCommentID:
+        type: integer
+      blockThreadID:
+        type: integer
+      blockUUID:
+        description: BlockID        uint64 `json:"blockID"`
+        type: string
+      canvasBranchID:
+        type: integer
+      emoji:
+        type: string
+      reelCommentID:
+        type: integer
+      reelID:
+        type: integer
+      scope:
+        description: '"block","block_comment","reel","reel_comment","block_thread"'
+        type: string
+    required:
+    - canvasBranchID
+    - emoji
+    - scope
+    type: object
+  reel.NewReelCreatePOST:
+    properties:
+      canvasBranchID:
+        type: integer
+      canvasRepositoryID:
+        type: integer
+      contextData:
+        items:
+          type: integer
+        type: array
+      highlightedText:
+        items:
+          type: integer
+        type: array
+      rangeEnd:
+        items:
+          type: integer
+        type: array
+      rangeStart:
+        items:
+          type: integer
+        type: array
+      selectedBlocks:
+        items:
+          type: integer
+        type: array
+      startBlockUUID:
+        type: string
+      textRangeEnd:
+        type: integer
+      textRangeStart:
+        type: integer
+    type: object
+  reel.ReelCommentCreatePOST:
+    properties:
+      data:
+        description: Comment Base
+        items:
+          type: integer
+        type: array
+      isEdited:
+        type: boolean
+      isReply:
+        type: boolean
+      parentId:
+        type: integer
+    type: object
+  response.ApiResponse:
+    type: object
+  role.CreateRolePost:
+    properties:
+      color:
+        description: 'Color, we''ll use #ffffff by default'
+        type: string
+      icon:
+        description: icons for future
+        type: string
+      name:
+        description: Role Name
+        type: string
+    required:
+    - name
+    type: object
+  role.UpdateManagementPost:
+    properties:
+      membersAdded:
+        description: array id of MemberIDs/UserIDs to be added
+        items:
+          type: integer
+        type: array
+      membersRemoved:
+        description: array id of MemberIDs/userIDs to be removed
+        items:
+          type: integer
+        type: array
+      roleId:
+        type: integer
+    type: object
+  role.UpdateRolePost:
+    properties:
+      name:
+        description: Role Name
+        type: string
+      roleId:
+        type: integer
+    required:
+    - name
+    - roleId
+    type: object
+  studio.BanUserValidator:
+    properties:
+      banReason:
+        type: string
+      userId:
+        type: integer
+    type: object
+  studio.CreateStudioValidator:
+    properties:
+      description:
+        type: string
+      handle:
+        type: string
+      name:
+        type: string
+      topics:
+        items:
+          type: string
+        type: array
+      website:
+        type: string
+    type: object
+  studio.JoinStudioBulkPost:
+    properties:
+      usersAdded:
+        description: array id of UserIDs to be added
+        items:
+          type: integer
+        type: array
+    type: object
+  studio.NewInvitePostOne:
+    properties:
+      email:
+        type: string
+      roles:
+        items:
+          type: integer
+        type: array
+    type: object
+  studio.RegisterNewStudioIntegrationValidator:
+    properties:
+      guildId:
+        type: string
+      guildName:
+        type: string
+    required:
+    - guildId
+    - guildName
+    type: object
+  studio.StudioMembershipRequestNew:
+    type: object
+  studio.StudioMembershipRequestReject:
+    type: object
+  studio.UpdateStudioValidator:
+    properties:
+      description:
+        type: string
+      handle:
+        type: string
+      name:
+        type: string
+      topics:
+        items:
+          type: string
+        type: array
+      website:
+        type: string
+    type: object
+  studio_integration.UpdateDiscordNotification:
+    properties:
+      status:
+        type: boolean
+    type: object
+  studio_integration.UpdateSlackNotification:
+    properties:
+      status:
+        type: boolean
+    type: object
+  studiopermissions.CreateStudioPermissionsPost:
+    properties:
+      isOverriddenFlag:
+        default: false
+        type: boolean
+      memberId:
+        type: integer
+      permsGroup:
+        type: string
+      roleId:
+        type: integer
+    type: object
+  user.PatchUserSettingsValidator:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/user.UpdateUserSettingsValidator'
+        type: array
+    type: object
+  user.UpdateUserSettingsValidator:
+    properties:
+      allComments:
+        type: boolean
+      darkMode:
+        type: boolean
+      followedMe:
+        type: boolean
+      followedMyStudio:
+        type: boolean
+      invite:
+        type: boolean
+      mentions:
+        type: boolean
+      publishAndMergeRequests:
+        type: boolean
+      reactions:
+        type: boolean
+      repliesToMe:
+        type: boolean
+      responseToMyRequests:
+        type: boolean
+      systemNotifications:
+        type: boolean
+      type:
+        type: string
+    required:
+    - allComments
+    - darkMode
+    - followedMe
+    - followedMyStudio
+    - invite
+    - mentions
+    - publishAndMergeRequests
+    - reactions
+    - repliesToMe
+    - responseToMyRequests
+    - systemNotifications
+    - type
+    type: object
+info:
+  contact:
+    email: santhosh@bip.so
+    name: API Support
+    url: https://bip.so
+  description: Bip Backend Platform server.
+  license:
+    name: Apache 2.0
+  termsOfService: https://bip.so/terms-of-service/
+  title: Bip Backend Platform
+paths:
+  /v1/auth/change-password:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Change Password
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.changePasswordData'
+      produces:
+      - application/json
+      responses: {}
+      summary: Change password for Loggedin User
+      tags:
+      - Auth
+  /v1/auth/existing-email:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Exisitng Emails Checker Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.expectedExistingEmailBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Check if user exists with this email or not
+      tags:
+      - Auth
+  /v1/auth/existing-username:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Exisitng Username Checker Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.expectedExistingUsernameBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Check if user exists with this username or not
+      tags:
+      - Auth
+  /v1/auth/forgot-password:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Reset Password
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.forgotPasswordData'
+      produces:
+      - application/json
+      responses: {}
+      summary: user has forgotton the password, we need an email
+      tags:
+      - Auth
+  /v1/auth/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Login User Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.expectedLoginPostData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Legacy Login User
+      tags:
+      - Auth
+  /v1/auth/logout:
+    post:
+      consumes:
+      - application/json
+      description: Future we'll integrate with Redis
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: This will logout a given user token.
+      tags:
+      - Auth
+  /v1/auth/otp:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: New OTP Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.PostNewOtpRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.ResponseNewOtp'
+      summary: Generate OTP for a USER
+      tags:
+      - Auth
+  /v1/auth/refresh-token:
+    post:
+      parameters:
+      - description: Refresh Token Post
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.expectedRefreshTokenPostData'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.TokenDetails'
+      summary: Refresh Tokens
+      tags:
+      - Auth
+  /v1/auth/reset-password:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Reset Password
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.ResetPasswordData'
+      produces:
+      - application/json
+      responses: {}
+      summary: Reset Password
+      tags:
+      - Auth
+  /v1/auth/signup:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Legacy user Signup
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.expectedLegacySignupPostData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Registers a new user with Email and Password
+      tags:
+      - Auth
+  /v1/auth/social-login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Auth Login
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.SocialAuthPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Social Login V1
+      tags:
+      - Auth
+  /v1/block-thread-comment/:
+    patch:
+      parameters:
+      - description: Create BlockThreadComment
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/blockThreadCommentcomment.PatchBlockThreadComment'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Update Block Thread Comment
+      tags:
+      - BlockThreadComment
+    post:
+      parameters:
+      - description: Create BlockThreadComment
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/blockThreadCommentcomment.PostBlockThreadComment'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create Block Thread Comment
+      tags:
+      - BlockThreadComment
+  /v1/block-thread-comment/{blockThreadCommentID}:
+    delete:
+      parameters:
+      - description: Block Thread Comment ID
+        in: path
+        name: blockThreadCommentID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Delete Block Thread Comment
+      tags:
+      - BlockThreadComment
+  /v1/block-thread-comment/{blockThreadID}:
+    get:
+      parameters:
+      - description: Block Thread Comment ID
+        in: path
+        name: blockThreadID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Block Thread Comment
+      tags:
+      - BlockThreadComment
+  /v1/block-thread-comment/reply/{blockThreadID}/{parentCommentID}:
+    get:
+      parameters:
+      - description: Block Thread Comment ID
+        in: path
+        name: blockThreadID
+        required: true
+        type: string
+      - description: Parent Comment ID
+        in: path
+        name: parentCommentID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Block Thread Comment Replies
+      tags:
+      - BlockThreadComment
+  /v1/block-thread/:
+    patch:
+      parameters:
+      - description: Create BlockThread
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/blockthread.PatchBlockThread'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Update Block Thread
+      tags:
+      - BlockThread
+    post:
+      parameters:
+      - description: Create BlockThread
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/blockthread.PostBlockThread'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create Block Thread
+      tags:
+      - BlockThread
+  /v1/block-thread/:blockThreadID/resolve:
+    post:
+      parameters:
+      - description: Resolve BlockThread
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/blockthread.EmptyBlockThread'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Resolve a Block Thread
+      tags:
+      - BlockThread
+  /v1/block-thread/{blockThreadID}:
+    delete:
+      parameters:
+      - description: Block Thread Id
+        in: path
+        name: blockThreadID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Delete Block Thread
+      tags:
+      - BlockThread
+    get:
+      parameters:
+      - description: Block Thread Id
+        in: path
+        name: blockThreadID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Block Thread
+      tags:
+      - BlockThread
+  /v1/block-thread/branch/{canvasBranchID}:
+    get:
+      parameters:
+      - description: Canvas Branch Id
+        in: path
+        name: canvasBranchID
+        required: true
+        type: string
+      - description: resolved
+        in: query
+        name: resolved
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Block Threads By BranchID
+      tags:
+      - BlockThread
+  /v1/bootstrap/get:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: user Id
+        in: query
+        name: userId
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets all data required
+      tags:
+      - Bootstrap
+  /v1/bootstrap/handle:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: This API gets a "string" and then will return Studio or User
+      tags:
+      - Bootstrap
+  /v1/canvas-branch/:canvasBranchID/access-request/:accessRequestID/manage:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Manage AR Req
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ar.ManageAccessRequestPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a new access request
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/:canvasBranchID/access-request/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: New AR Req
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/queries.CreateAccessRequestPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a new access request
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/:canvasBranchID/access-request/list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: get all access requests by studio
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/:canvasBranchID/publish-request/:publishRequestID/delete:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: API is used by SAME person to delete the PR
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete Branch
+      tags:
+      - CanvasBranch
+    get:
+      responses: {}
+      summary: Get branch metadata with MR if present.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/blocks:
+    get:
+      consumes:
+      - application/json
+      description: You can call this api to Get ALL the blocks on a given branch
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Many Blocks on a Branch
+      tags:
+      - CanvasBranch
+    post:
+      consumes:
+      - application/json
+      description: |-
+        You can call this api to update ALL the blocks on a given branch
+        This is an Idempotent endpoint and you need to specfiy the "scope" with each block
+        If the scope on a block json is Empty "" it will be ignore from the operations.
+        Allowed Scope: "create" - New Block, "update" - Update Block, "delete" - Delete Block (Softdeleteonly)
+      parameters:
+      - description: Bulk
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.CanvasBlockPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Bulk Create / Update
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/blocks/{commitID}/blocks-history:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get blocks from git history by commit id
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/blocks/associations:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Bulk
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.CanvasBlockAssociationPost'
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/diffblocks:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: API will returns Merge Request reponse before merge request is created.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/invited:
+    get:
+      responses: {}
+      summary: Get Emails which were invited on a Branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/last-updated:
+    get:
+      responses: {}
+      summary: Get branch lastupdated at.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/merge-request/:mergeRequestID/delete:
+    post:
+      consumes:
+      - application/json
+      description: This is based on persons permissions.
+      parameters:
+      - description: Delete
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.EmptyPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a Merge Request usually used by Person to delete Their own Request.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/merge-request/:mergeRequestID/merge-accept:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Accept/Partial Accept
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.MergeRequestAcceptPartialPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Accept / Partially Accept a Merge request, Requires CANVAS_BRANCH_MANAGE_MERGE_REQUESTS
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/merge-request/:mergeRequestID/reject:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Use this endpoint to Reject a MergeRequest needs to have CANVAS_BRANCH_MANAGE_MERGE_REQUESTS
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/merge-request/{mergeRequestID}/response:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: API will returns (Merge Request Object, Branch Object, Blocks on Rough
+        Branch, Blocks on Parent Branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/merge-request/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Cancel
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.MergeRequestCreatePost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a Merge Request, reequires 'CANVAS_BRANCH_CREATE_MERGE_REQUEST'
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/merge-request/list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get All the Merge Requests on this branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/publish-request/:publishRequestID/manage:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Publish Req
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.ManagePublishRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Accept and Reject a Publish Request (Check Perms)
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/publish-request/init:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        This will eitehr create a PR or Directy you can check the `"published": false,` in the json response
+        if the publish was done or a request was created
+      parameters:
+      - description: Publish
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.InitPRPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Publish a branch or Request a publish request (based on your permissions)
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/{canvasBranchID}/publish-request/list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get All the Publish Requests on a Branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/attributions/{canvasBranchID}:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get CanvasBranch All Attributions
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/:canvasBranchID/create-access-token:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/bat.CreateAccessTokenPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a Branch Token with Access
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/:canvasBranchID/invite-via-emails:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/bat.CreateEmailInvite'
+      produces:
+      - application/json
+      responses: {}
+      summary: 'InviteViaEmail: Invite People to Canvas who may or may not have accounts'
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/{canvasBranchID}/history:
+    get:
+      consumes:
+      - application/json
+      description: Get history of commits of the Main branch
+      produces:
+      - application/json
+      responses: {}
+      summary: Get history of commits of the Main branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/{canvasBranchID}/join/{code}:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/bat.PlaceHolder'
+      produces:
+      - application/json
+      responses: {}
+      summary: Join user with a given branch Token with Access
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/{canvasBranchID}/rough-branch:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        When you call call this API it will create a copy of all the blocks
+        This is a rough branch but is only for a Logged in user
+      parameters:
+      - description: Bulk
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.NewDraftBranchPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a rough branch for this user.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/{canvasBranchID}/visibility:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.CanvasBranchVisibilityPost'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update Branch Visibility
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/delete-token/{code}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: code
+        in: path
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a Branch Acceess Token By Key
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/drafts:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Branches which are Rough and Unpublished by Studio
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/get-access-token-detail/:code:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Details of a short code, by invite code.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/nav/:canvasBranchID/node:
+    get:
+      consumes:
+      - application/json
+      description: Given a BranchID we will Children of a Given Node
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.GetCanvasBranches'
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Children of a Given Branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/nav/:canvasBranchID/root:
+    get:
+      consumes:
+      - application/json
+      description: Given a BranchID we will return Collection -> Repos -> BranchID
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.GetCanvasBranches'
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Root of a Given Branch
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/nav/get-branches:
+    post:
+      consumes:
+      - application/json
+      description: You can call this api to Get ALL the branches on a given canvas
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.GetCanvasBranches'
+      produces:
+      - application/json
+      responses: {}
+      summary: Get branches of a block.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/branch-ops/nav/search:
+    post:
+      consumes:
+      - application/json
+      description: Search by query
+      parameters:
+      - description: Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.SearchBranchRepos'
+      produces:
+      - application/json
+      responses: {}
+      summary: Search Repos and Branches.
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/create:
+    post:
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Create Canvas Repo
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranch.newCanvasBranchPost'
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Create a new canvasBranch for the canvasRepo
+      tags:
+      - CanvasBranch
+  /v1/canvas-branch/repo/{canvasBranchID}:
+    get:
+      responses: {}
+      summary: Get branch metadata with repo and MR if present.
+      tags:
+      - CanvasBranch
+  /v1/canvas-repo/:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get One Canvas using Key
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/{canvasRepoID}:
+    delete:
+      responses: {}
+      summary: Delete Canvas Repo
+      tags:
+      - CanvasRepo
+    patch:
+      parameters:
+      - description: UpdateCanvas Repo
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.UpdateCanvasRepoPost'
+      responses: {}
+      summary: Update Canvas - Note this only updates Name or Icon for a Repo use
+        Move API for positiion
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/create:
+    post:
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Create Canvas Repo
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.NewCanvasRepoPost'
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Create Canvas Repo with a Default Branch
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/create-language:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: create language data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.CreateLanguageValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create Language Canvas Repo
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/distinct-languages:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get distinct languages of all repos
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/get:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Get all Canvas
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.GetAllCanvasValidator'
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get all Canvas Related to collection
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/init:
+    post:
+      parameters:
+      - description: Init Canvas Repo
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.InitCanvasRepoPost'
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Init Canvas Repo with a Fresh Branch
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/move:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Move Canvas
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.MoveCanvasRepoPost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Move Canvas Position
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/next-prev/{canvasRepoId}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: canvas Repo Id
+        in: path
+        name: canvasRepoId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get next and prev canvas of that canvas
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/role/{roleId}:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Get all Canvas
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.GetAllCanvasValidator'
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Role Id
+        in: path
+        name: roleId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get role Canvas Related to collection
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/search/role/{roleId}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: Role Id
+        in: path
+        name: roleId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Search Canvas Repos
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/search/user/{userId}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: search
+        in: query
+        name: search
+        required: true
+        type: string
+      - description: User Id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Search Canvas Repos
+      tags:
+      - CanvasRepo
+  /v1/canvas-repo/user/{userId}:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Get all Canvas
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasrepo.GetAllCanvasValidator'
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: User Id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get member Canvas Related to collection
+      tags:
+      - CanvasRepo
+  /v1/canvasbranchpermission/{canvasBranchId}:
+    get:
+      parameters:
+      - description: Canvas Branch Id
+        in: path
+        name: canvasBranchId
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get canvas branch permissions
+      tags:
+      - CanvasBranch Permissions
+  /v1/canvasbranchpermission/{canvasBranchPermissionId}:
+    delete:
+      parameters:
+      - description: Canvas Branch ID
+        in: path
+        name: canvasBranchPermissionId
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Hard delete canvas branch permission
+      tags:
+      - CanvasBranch Permissions
+  /v1/canvasbranchpermission/bulk-update:
+    post:
+      parameters:
+      - description: Create bulk Canvas Branch permission
+        in: body
+        name: body
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/canvasbranchpermissions.NewCanvasBranchPermissionCreatePost'
+          type: array
+      - description: inherit permissions
+        in: query
+        name: inherit
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create Bulk New canvas branch permission
+      tags:
+      - CanvasBranch Permissions
+  /v1/canvasbranchpermission/inherit/{canvasBranchId}:
+    post:
+      parameters:
+      - description: Canvas Branch Id
+        in: path
+        name: canvasBranchId
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Inherits the parent permissions.
+      tags:
+      - CanvasBranch Permissions
+  /v1/canvasbranchpermission/update:
+    post:
+      parameters:
+      - description: Create Canvas Branch permission
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/canvasbranchpermissions.NewCanvasBranchPermissionCreatePost'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create New canvas branch permission
+      tags:
+      - CanvasBranch Permissions
+  /v1/collection/{collectionId}/visibility:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection Id
+        in: path
+        name: collectionId
+        required: true
+        type: string
+      - description: inherit visibilty
+        in: query
+        name: inherit
+        type: string
+      - description: Update Collection
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection.VisibilityUpdateValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Update Collection Visibility - "private", "view", "comment", "edit"
+      tags:
+      - Collection
+  /v1/collection/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Create Collection
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection.CollectionCreateValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create Collection
+      tags:
+      - Collection
+  /v1/collection/delete/{collectionId}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection Id
+        in: path
+        name: collectionId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Delete Collection
+      tags:
+      - Collection
+  /v1/collection/get:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get all Collections related to studioID
+      tags:
+      - Collection
+  /v1/collection/move:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Move Collection
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection.CollectionMoveValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Move Collection Position
+      tags:
+      - Collection
+  /v1/collection/next-prev/{collectionId}:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: collectionId
+        in: path
+        name: collectionId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get next and prev collection
+      tags:
+      - Collection
+  /v1/collection/role/{roleId}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Role Id
+        in: path
+        name: roleId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get all Collections to display in role permissions
+      tags:
+      - Collection
+  /v1/collection/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update Collection
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection.CollectionUpdateValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Update Collection
+      tags:
+      - Collection
+  /v1/collection/user/{userId}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: User Id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get all Collections to display in member permissions
+      tags:
+      - Collection
+  /v1/collectionpermission/{collectionPermissionId}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: collectionId Id
+        in: path
+        name: collectionPermissionId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Delete collection permissions by collection id
+      tags:
+      - Collection Permission
+  /v1/collectionpermission/{collectionid}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection Id
+        in: path
+        name: collectionid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets collection permissions by collection id
+      tags:
+      - Collection Permission
+  /v1/collectionpermission/update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: collection permission data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/collectionpermissions.CollectionPermissionValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Create/Update collection permissions
+      tags:
+      - Collection Permission
+  /v1/follow/studio/follow:
+    post:
+      parameters:
+      - description: Follow studio
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/follow.PostFollowStudioRequest'
+      responses: {}
+      summary: Follow a Studio
+      tags:
+      - Followings
+  /v1/follow/studio/follower:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/follow.FollowUserStudioCountResponse'
+      summary: Followers Count for Studio
+      tags:
+      - Followings
+  /v1/follow/studio/unfollow:
+    post:
+      parameters:
+      - description: unFollow User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/follow.PostUnFollowStudioRequest'
+      responses: {}
+      summary: Unfollow a Studio
+      tags:
+      - Followings
+  /v1/follow/user/follow:
+    post:
+      parameters:
+      - description: Follow User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/follow.PostFollowUserRequest'
+      responses: {}
+      summary: Follow a User
+      tags:
+      - Followings
+  /v1/follow/user/follow-count:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/follow.FollowUserFollowCountResponse'
+      summary: Followers Count for loggedin user
+      tags:
+      - Followings
+  /v1/follow/user/list:
+    get:
+      responses: {}
+      summary: Get user followers or following a Studio
+      tags:
+      - Followings
+  /v1/follow/user/unfollow:
+    post:
+      parameters:
+      - description: unFollow User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/follow.PostUnFollowUserRequest'
+      responses: {}
+      summary: Unfollow a User
+      tags:
+      - Followings
+  /v1/global/check-handle:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: handle to check
+        in: query
+        name: handle
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Check user/studio username/handle available
+      tags:
+      - Global
+  /v1/global/search:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: next page
+        in: query
+        name: skip
+        type: integer
+      - description: query to search
+        in: query
+        name: query
+        type: string
+      - description: 'type of objects: studios/users/pages/reels, empty for all'
+        in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Search Studios & Users
+      tags:
+      - Global
+  /v1/global/upload-file:
+    post:
+      parameters:
+      - description: File
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: Model Name
+        in: formData
+        name: model
+        required: true
+        type: string
+      - description: Model uuid
+        in: formData
+        name: uuid
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Global generic upload image API
+      tags:
+      - Global
+  /v1/integrations:
+    delete:
+      consumes:
+      - application/json
+      description: Delete integration from studio
+      parameters:
+      - description: integration type
+        in: query
+        name: type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete Integration
+      tags:
+      - StudioIntegrations
+  /v1/integrations/discord:
+    put:
+      consumes:
+      - application/json
+      description: Update discord dm notifications status
+      parameters:
+      - description: Update discord dm notifications
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio_integration.UpdateDiscordNotification'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update discord dm notifications
+      tags:
+      - StudioIntegrations
+  /v1/integrations/discord/update:
+    get:
+      consumes:
+      - application/json
+      description: Check if studio needs to the integration done again.
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Integrations Settings
+      tags:
+      - StudioIntegrations
+  /v1/integrations/settings:
+    get:
+      consumes:
+      - application/json
+      description: Get discord, slack, dm integration page settings
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Integrations Settings
+      tags:
+      - StudioIntegrations
+  /v1/integrations/slack:
+    put:
+      consumes:
+      - application/json
+      description: Update slack dm notifications status
+      parameters:
+      - description: Update slack dm notifications
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio_integration.UpdateSlackNotification'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update slack dm notifications
+      tags:
+      - StudioIntegrations
+  /v1/member/canvas-branch/{canvasBranchID}:
+    get:
+      consumes:
+      - application/json
+      description: we can get all members or roles having access to canvas branch
+      parameters:
+      - description: Canvas Branch Id
+        in: path
+        name: canvasBranchID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: All members or roles having access to canvas branch
+      tags:
+      - Member
+  /v1/member/leave-studio/{studioId}:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Leave Studio
+      tags:
+      - Member
+  /v1/member/role/{roleID}:
+    get:
+      consumes:
+      - application/json
+      description: we can get all members of a role
+      parameters:
+      - description: roleID Id
+        in: path
+        name: roleID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: All role members
+      tags:
+      - Member
+  /v1/member/role/{roleID}/search-members:
+    get:
+      consumes:
+      - application/json
+      description: we can search for all members of a role
+      parameters:
+      - description: roleID Id
+        in: path
+        name: roleID
+        required: true
+        type: string
+      - description: Search
+        in: query
+        name: search
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: All role members by search
+      tags:
+      - Member
+  /v1/member/search:
+    get:
+      consumes:
+      - application/json
+      description: we get all members of a studio
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: search string
+        in: query
+        name: search
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: All studio members
+      tags:
+      - Member
+  /v1/mentions/:
+    post:
+      consumes:
+      - application/json
+      description: 'Requires a scope: scope can be "block","block_comment","reel","reel_comment",
+        "block_thread"'
+      parameters:
+      - description: Create Mention
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/mentions.MentionPost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create a Mention
+      tags:
+      - Mentions
+  /v1/message/{messageID}:
+    delete:
+      description: Deletes Discord Message captured from bipmark for the user
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Delete Message
+      tags:
+      - Messages
+  /v1/message/get:
+    get:
+      description: Gets Dicord Messages captured from bipmark for the user
+      parameters:
+      - description: next page
+        in: query
+        name: skip
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Messages
+      tags:
+      - Messages
+  /v1/notifications/:
+    get:
+      parameters:
+      - description: Type Eg. all, studio, personal
+        in: path
+        name: type
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Notifications
+      tags:
+      - Notifications
+  /v1/notifications/count:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: All Notifications Count of user
+      tags:
+      - Notifications
+  /v1/notifications/mark-as-seen:
+    post:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Mark as read
+      tags:
+      - Notifications
+  /v1/parser/import-file:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: file
+        in: formData
+        name: file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Import single file
+      tags:
+      - Parser
+  /v1/parser/import-notion:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Zip file file
+        in: formData
+        name: file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Import notion files via zip
+      tags:
+      - Parser
+  /v1/parser/markdown/{canvasBranchID}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Canvas Branch Id
+        in: path
+        name: canvasBranchID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get markdown file of the canvas Branch
+      tags:
+      - Parser
+  /v1/permission/canvas/{collectionId}:
+    get:
+      parameters:
+      - description: Studio ID
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: collection Id
+        in: path
+        name: collectionId
+        required: true
+        type: string
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Gets User canvas Permissions
+      tags:
+      - Permissions
+  /v1/permission/canvas/{collectionId}/{parentCanvasId}:
+    get:
+      parameters:
+      - description: Studio ID
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: collectionId Id
+        in: path
+        name: collectionId
+        required: true
+        type: string
+      - description: collectionId Id
+        in: path
+        name: parentCanvasId
+        required: true
+        type: string
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Gets User canvas Permissions
+      tags:
+      - Permissions
+  /v1/permission/collection:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Gets User Studio Collection Permissions
+      tags:
+      - Permissions
+  /v1/permission/flush-cache:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Redis Flush API
+      tags:
+      - RedisAPI
+  /v1/permission/invalidate-cache:
+    get:
+      parameters:
+      - description: Hash key or Direct redis key
+        in: query
+        name: hash
+        required: true
+        type: string
+      - description: Key
+        in: query
+        name: key
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Redis Invalidate cache API
+      tags:
+      - RedisAPI
+  /v1/permission/studio:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Gets User Studio Permissions
+      tags:
+      - Permissions
+  /v1/permissions-schema/canvasBranch/schema:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/permissiongroup.PermissionsSchemaResponse'
+      summary: Get Canvas Permissions Schema
+      tags:
+      - PermissionGroup
+  /v1/permissions-schema/collection/schema:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/permissiongroup.PermissionsSchemaResponse'
+      summary: Get Collections Permissions Schema
+      tags:
+      - PermissionGroup
+  /v1/permissions-schema/studio/schema:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/permissiongroup.PermissionsSchemaResponse'
+      summary: Get Studio Permissions Schema
+      tags:
+      - PermissionGroup
+  /v1/posts/:
+    get:
+      responses: {}
+      summary: Get All Posts for this Studio
+      tags:
+      - Post
+  /v1/posts/:postID:
+    delete:
+      responses: {}
+      summary: Delete Single Post
+      tags:
+      - Post
+    get:
+      responses: {}
+      summary: Get Single Post
+      tags:
+      - Post
+  /v1/posts/:postID/add-reaction:
+    post:
+      parameters:
+      - description: New post reaction
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.NewPostReaction'
+      responses: {}
+      summary: New Post Reaction
+      tags:
+      - Post
+  /v1/posts/:postID/comments:
+    get:
+      responses: {}
+      summary: Get All Comments on a POST
+      tags:
+      - Post
+  /v1/posts/:postID/comments/:postCommentID:
+    delete:
+      responses: {}
+      summary: Delete a comment on a POST
+      tags:
+      - Post
+  /v1/posts/:postID/comments/:postCommentID/add-reaction:
+    post:
+      parameters:
+      - description: New post comment reaction
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.NewPostCommentReaction'
+      responses: {}
+      summary: New Post Comment Reaction
+      tags:
+      - Post
+  /v1/posts/:postID/comments/:postCommentID/edit:
+    patch:
+      parameters:
+      - description: Update Post Comment
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.UpdatePostCommentValidation'
+      responses: {}
+      summary: Patch a single comment
+      tags:
+      - Post
+  /v1/posts/:postID/comments/:postCommentID/remove-reaction:
+    post:
+      parameters:
+      - description: Remove post comment reaction
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.RemovePostCommentReaction'
+      responses: {}
+      summary: New Post Comment Reaction
+      tags:
+      - Post
+  /v1/posts/:postID/comments/create:
+    post:
+      parameters:
+      - description: Create Studio Post Comment
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.CreatePostCommentValidation'
+      responses: {}
+      summary: Creates a new POST
+      tags:
+      - Post
+  /v1/posts/:postID/edit:
+    patch:
+      parameters:
+      - description: Update Studio Post
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.UpdatePostThread'
+      responses: {}
+      summary: Patch a single post
+      tags:
+      - Post
+  /v1/posts/:postID/remove-reaction:
+    post:
+      parameters:
+      - description: New post reaction
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.RemovePostReaction'
+      responses: {}
+      summary: New Post Reaction
+      tags:
+      - Post
+  /v1/posts/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Create Studio Post
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/post.NewPostThread'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Creates a new POST
+      tags:
+      - Post
+  /v1/posts/homepage:
+    get:
+      responses: {}
+      summary: Get All Posts for this Studio
+      tags:
+      - Post
+  /v1/publish-requests/:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get All the Publish Requests on a Studio
+      tags:
+      - PublishRequest
+  /v1/reactions/create:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        This API will let you create a reaction on following
+        models Blocks, Block Thread, Block Comment, Reel, Reel Comment
+        Requires a scope: scope can be "block","block_comment","reel","reel_comment", "block_thread"
+      parameters:
+      - description: Create Mention
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reactions.CreateMentionPost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create Mention
+      tags:
+      - Reactions
+  /v1/reactions/remove:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        This API will let you remove a reaction on following
+        models Blocks, Block Thread, Block Comment, Reel, Reel Comment
+        Requires a scope: scope can be "block","block_comment","reel","reel_comment", "block_thread"
+      parameters:
+      - description: Remove Reaction
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reactions.CreateMentionPost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Removes a Reaction
+      tags:
+      - Reactions
+  /v1/reels/:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        You can call this api to Get ALL the reels for your studio
+        :  {{ .BasePath }}/v1/reels/ - All reels for that studio
+        :  {{ .BasePath }}/v1/reels/?canvasBranchID=256 - All reels for canvasBranchID=256
+        :  {{ .BasePath }}/v1/reels/?blockUUID=e92942a8-de88-43e6-ba20-fb2c634129b0 - All reels for blockUUID=<>
+      produces:
+      - application/json
+      responses: {}
+      summary: Get All Reels for your Studio - Also supports ?canvasBranchID=45 QP
+      tags:
+      - Reels
+    post:
+      consumes:
+      - application/json
+      description: Create reeel for your studio
+      parameters:
+      - description: Create Reel
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reel.NewReelCreatePOST'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a reel
+      tags:
+      - Reels
+  /v1/reels/:reelID:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a reel
+      tags:
+      - Reels
+    get:
+      consumes:
+      - application/json
+      description: You can call this api to Get One Reel By ID
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Single Reel
+      tags:
+      - Reels
+  /v1/reels/:reelID/comments/:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: parent comment id
+        in: query
+        name: parentId
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get All Comments on a Reels for your Studio
+      tags:
+      - Reels
+    post:
+      consumes:
+      - application/json
+      description: create a new comment on a Reel
+      parameters:
+      - description: Create Comment on Reel
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/reel.ReelCommentCreatePOST'
+      produces:
+      - application/json
+      responses: {}
+      summary: Add comment on a Reel
+      tags:
+      - Reels
+  /v1/reels/{reelID}/comments/{reelCommentID}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Reel Id
+        in: path
+        name: reelID
+        required: true
+        type: string
+      - description: reelCommentID
+        in: path
+        name: reelCommentID
+        required: true
+        type: string
+      - description: resolved
+        in: query
+        name: resolved
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a reel
+      tags:
+      - Reels
+  /v1/reels/feed:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        This API is specific to the user. This will return all the reels which user have access in the system.
+        To get studio specific reels => ?filter=studio and studio id as bip-studio-id in header
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Reels feed from getStream. This is a paginated API
+      tags:
+      - Reels
+  /v1/reels/popular:
+    get:
+      consumes:
+      - application/json
+      description: It sends all REELS for now
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Popular Reels (POV User)
+      tags:
+      - Reels
+  /v1/role/:roleId:
+    delete:
+      responses: {}
+      summary: Delete role for a studio
+      tags:
+      - Roles
+  /v1/role/create:
+    post:
+      parameters:
+      - description: Create Role
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/role.CreateRolePost'
+      responses: {}
+      summary: Create role for a studio
+      tags:
+      - Roles
+  /v1/role/edit:
+    post:
+      parameters:
+      - description: Edit Role
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/role.UpdateRolePost'
+      responses: {}
+      summary: Edit role for a studio
+      tags:
+      - Roles
+  /v1/role/member/{memberId}:
+    get:
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Member Id
+        in: path
+        name: memberId
+        required: true
+        type: string
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Get Member roles
+      tags:
+      - Roles
+  /v1/role/membership:
+    post:
+      parameters:
+      - description: Update Members In Role
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/role.UpdateManagementPost'
+      responses: {}
+      summary: Update Role Membership
+      tags:
+      - Roles
+  /v1/slack/connect:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: userId
+        in: query
+        name: userId
+        type: string
+      - description: userId
+        in: query
+        name: studioId
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Connect studio to slack
+      tags:
+      - slack
+  /v1/studio/:studioid:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Deletes a studio by id
+      tags:
+      - Studio
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets a studio by id
+      tags:
+      - Studio
+  /v1/studio/{studioId}/customer-portal-session:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Get Payment Link
+      tags:
+      - Studio
+  /v1/studio/{studioId}/join:
+    post:
+      consumes:
+      - application/json
+      description: If user had already left, he can rejoin, else if he was banned
+        then it throws error, otherwise it will join
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: adding user to a studio
+      tags:
+      - Studio
+  /v1/studio/{studioId}/membership-request/:membershipRequestID/accept:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      tags:
+      - Studio
+  /v1/studio/{studioId}/membership-request/:membershipRequestID/reject:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      - description: New Request Object
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.StudioMembershipRequestReject'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      tags:
+      - Studio
+  /v1/studio/{studioId}/membership-request/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      tags:
+      - Studio
+  /v1/studio/{studioId}/membership-request/new:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      - description: New Request Object
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.StudioMembershipRequestNew'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      tags:
+      - Studio
+  /v1/studio/{studioId}/stats:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: path
+        name: studioId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Get Studio Stats
+      tags:
+      - Studio
+  /v1/studio/admins:
+    get:
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      responses: {}
+      security:
+      - bearerAuth: []
+      summary: Get Studio Admins
+      tags:
+      - Studio
+  /v1/studio/ban:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Ban User
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.BanUserValidator'
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      tags:
+      - Studio
+  /v1/studio/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Create Studio Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.CreateStudioValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Creates a new studio for the user
+      tags:
+      - Studio
+  /v1/studio/edit:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update Studio Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.UpdateStudioValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Edit a studio
+      tags:
+      - Studio
+  /v1/studio/external-integration/:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Get Studio Vendor
+      tags:
+      - Studio
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Register New Studio Integration Validator
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.RegisterNewStudioIntegrationValidator'
+      - description: Vendor Id
+        in: header
+        name: Bip-Partner-Key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Register New Integration
+      tags:
+      - Studio
+  /v1/studio/external-integration/ping:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Get Studio Vendor
+      tags:
+      - Studio
+  /v1/studio/external-integration/user-points:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Vendor Id
+        in: header
+        name: Bip-Partner-Key
+        required: true
+        type: string
+      - description: guildId
+        in: query
+        name: guildId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Get Studio User Points
+      tags:
+      - Studio
+  /v1/studio/image:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: File
+        in: formData
+        name: file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Upload & Update a studio image
+      tags:
+      - Studio
+  /v1/studio/invite-via-email:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Invite Users in Bulk
+        in: body
+        name: body
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/studio.NewInvitePostOne'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Invite many users via emails flow
+      tags:
+      - Studio
+  /v1/studio/join/bulk:
+    post:
+      consumes:
+      - application/json
+      description: for all users, If user had already left, he can rejoin, else if
+        he was banned then it throws error, otherwise it will join
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      - description: Join users in bulk
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studio.JoinStudioBulkPost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: add users in bulk to the studio
+      tags:
+      - Studio
+  /v1/studio/memberCount:
+    post:
+      consumes:
+      - application/json
+      description: counts all members which belong to the studio excluding those who
+        have left or banned
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      tags:
+      - Studio
+  /v1/studio/members:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: next page
+        in: query
+        name: skip
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets members by studioId
+      tags:
+      - Studio
+  /v1/studio/popular:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets popular studios
+      tags:
+      - Studio
+  /v1/studio/roles:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets roles by studio Id
+      tags:
+      - Studio
+  /v1/studio/toggle-membership:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Toggle studio Membership
+      tags:
+      - Studio
+  /v1/studiopermission/:studioPermissionID:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: deletes studio permissions by studio id
+      tags:
+      - Studio Permission
+  /v1/studiopermission/getAll:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets studio permissions by studio id
+      tags:
+      - Studio Permission
+  /v1/studiopermission/update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update permissions Data
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/studiopermissions.CreateStudioPermissionsPost'
+      - description: Studio Id
+        in: header
+        name: bip-studio-id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Create/Update studio permissions
+      tags:
+      - Studio Permission
+  /v1/twitter/metadata/{id}:
+    get:
+      parameters:
+      - description: Tweet ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get Twitter tweet Metadata
+      tags:
+      - Twitter
+  /v1/user/contacts:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Since
+        in: query
+        name: since
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get User contacts
+      tags:
+      - User Contacts
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Create User Contacts
+        in: body
+        name: body
+        required: true
+        schema:
+          additionalProperties: true
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Create User contacts
+      tags:
+      - User Contacts
+  /v1/user/followers-list:
+    get:
+      responses: {}
+      summary: Get Users Followers and Following List (Send the ?userId=0 to the get)
+      tags:
+      - User
+  /v1/user/following-list:
+    get:
+      responses: {}
+      summary: Get Users Following (Send the ?userId=0 to the get)
+      tags:
+      - User
+  /v1/user/info:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: User ID
+        in: query
+        name: user_id
+        type: string
+      - description: Username
+        in: query
+        name: username
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      - bearerAuth: []
+      summary: Get User
+      tags:
+      - User
+  /v1/user/popular:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: next page
+        in: query
+        name: skip
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      summary: Gets popular users
+      tags:
+      - User
+  /v1/user/settings:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Get User settings
+      tags:
+      - User Settings
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update User Settings
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/user.PatchUserSettingsValidator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Update User settings
+      tags:
+      - User Settings
+  /v1/user/setup:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body with image file
+        in: formData
+        name: file
+        type: file
+      - description: Last Name
+        in: formData
+        name: fullName
+        required: true
+        type: string
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Bio
+        in: formData
+        name: bio
+        required: true
+        type: string
+      - description: Twitter Url
+        in: formData
+        name: twitterUrl
+        required: true
+        type: string
+      - description: Website
+        in: formData
+        name: website
+        required: true
+        type: string
+      - description: Location
+        in: formData
+        name: location
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Setup User
+      tags:
+      - User
+  /v1/user/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body with image file
+        in: formData
+        name: file
+        type: file
+      - description: Full Name
+        in: formData
+        name: fullName
+        required: true
+        type: string
+      - description: Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Bio
+        in: formData
+        name: bio
+        required: true
+        type: string
+      - description: Twitter Url
+        in: formData
+        name: twitterUrl
+        required: true
+        type: string
+      - description: Website
+        in: formData
+        name: website
+        required: true
+        type: string
+      - description: Location
+        in: formData
+        name: location
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ApiResponse'
+      security:
+      - bearerAuth: []
+      summary: Update User
+      tags:
+      - User
+schemes:
+- http
+- https
+securityDefinitions:
+  bearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

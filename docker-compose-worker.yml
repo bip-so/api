@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  integration-task:
+    container_name: integration-task
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: cmd/integration_task/Dockerfile
+    restart: "on-failure"

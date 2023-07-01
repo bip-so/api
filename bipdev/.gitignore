@@ -1,0 +1,28 @@
+.DS_Store
+bin
+bip
+internal/configs/*
+!internal/configs/config.go
+config.stage.yaml
+config.prod.yaml
+config.yaml
+publish
+public
+app/public/sitemap.xml
+!app/public
+deploy/key.pem
+deploy/key-ir.pem
+
+# Visual Studio Code
+.vscode/*
+.history/
+Notes.txt
+
+# Executables
+bip.exe
+__debug_bin
+gin-bin
+launch.json
+.idea/vcs.xml
+.idea/modules.xml
+.idea/bip-backend.iml

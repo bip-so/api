@@ -1,0 +1,46 @@
+version: "3"
+
+dotenv: [".env", "{{.ENV}}/.env.", "{{.HOME}}/.env"]
+
+tasks:
+  build:
+    cmds:
+      - GOOS=linux GOARCH=amd64 go build -o main main.go
+  air:
+    cmds:
+      - air
+  run:
+    cmds:
+      - go run main.go
+
+  discordclient:
+    cmds:
+      - go run cmd/discord_client/main.go
+
+  algolia-user:
+    cmds:
+      - go run algolia/users/main.go
+
+  tidy:
+    cmds:
+      - go mod tidy
+
+  install:
+    cmds:
+      - go install
+
+  dock-local:
+    cmds:
+      - docker build --build-arg GITLAB_USER_NAME=$GITLAB_USER_NAME --build-arg GITLAB_TOKEN=$GITLAB_TOKEN  -f dockerfiles/local.Dockerfile -t platform:local .
+
+  docker-compose-local-up:
+    cmds:
+      - docker-compose -f docker-compose.local.yml up -d
+
+  docker-compose-local-down:
+    cmds:
+      - docker-compose -f docker-compose.local.yml down
+
+  docker-compose-stage-up:
+    cmds:
+      - docker-compose -f docker-compose.stage.yml up -d

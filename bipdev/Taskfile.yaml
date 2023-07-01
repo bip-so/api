@@ -1,0 +1,14 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - go build
+
+  tidy:
+    cmds:
+      - go mod tidy
+
+  install:
+    cmds:
+      - go install
